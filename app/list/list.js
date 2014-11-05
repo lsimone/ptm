@@ -1,8 +1,9 @@
 'use strict';
 
 (function () {
-
+        	
     var INIT_NEW_ENTRY = "enter new entry...";
+
 
     var todos = [{
         text : "test"
