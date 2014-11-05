@@ -1,10 +1,14 @@
 <p>TODO:</p>
 
 <div  ng-controller="ListCtrl as list">
-	<div ng-repeat="todo in list.todos">
-		<p>
-			todo: {{todo}}
-		</p>
-
-	</div>
+	<form class="form-inline" role="form">
+		<textarea ng-model="newEntry" class="form-control" rows="1" placeholder="Write your new todo..."></textarea>
+		<button type="button" class="btn btn-default" ng-click="addNew()">Add</button>
+  	</form>
+	<ul>
+		<li ng-repeat="todo in todos">
+			<span ng-click="setEdit($event, $index, true)" ng-hide="todo.edit" style="cursor:pointer;">{{todo.text}}</span>
+			<textarea id="{{ 'input-' + $index }}" ng-blur="setEdit($event, $index, false)" ng-show="todo.edit" ng-model="todo.text" class="form-control" rows="1" id="comment"></textarea>
+		</li>
+	</ul>
 </div>
