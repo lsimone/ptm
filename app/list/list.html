@@ -5,7 +5,12 @@
 		<textarea ng-model="newEntry" class="form-control" rows="1" placeholder="Write your new todo..."></textarea>
 		<button type="button" class="btn btn-default" ng-click="addNew()">Add</button>
   	</form>
+  	<h1>TODAY</h1>
+  	<todo-list todos="todos" type="'today'"></todo-list>
+  	<h1>TBD</h1>  	
   	<todo-list todos="todos"></todo-list>
+  	<h1>DONE</h1>  	
+  	<todo-list todos="todos" type="'done'"></todo-list>
 	<!-- <ul>
 		<li ng-repeat="todo in todos">
 			<span ng-click="setEdit($event, $index, true)" ng-hide="todo.edit" style="cursor:pointer;">{{todo.text}}</span>

@@ -1,5 +1,20 @@
-<ul ng-controller="TodoCtrl">
-	<li ng-repeat="todo in todos">
-		<todo todo="todo"></todo>		
+<ul ng-if="todos && !collapsed" ng-controller="TodoCtrl" class="list-group">
+	<li ng-repeat="todo in todos | filter:typeFilter" class="list-group-item" style="cursor: move;">
+		<div ng-draggable="dragDrop(todo)" class="form-inline">
+			<span class="glyphicon glyphicon-play"></span>
+			<span class="glyphicon glyphicon-pause"></span>
+			<span ng-show="todo.todos && todo.todos.length>0" ng-click="collapsed=!collapsed" ng-class="collapsed? 'glyphicon glyphicon-expand' : 'glyphicon glyphicon-collapse-down'"></span>
+			<span ng-click="changePriority(todo)" ng-class="'glyphicon glyphicon-arrow-' + getPrioArrow(todo)"></span>
+			<span ng-click="toggleDone(todo)" ng-class="todo.type==1 ? 'glyphicon glyphicon-ok-circle' : 'glyphicon glyphicon-ok'"></span>
+			<span ng-click="todos.splice(todos.indexOf(todo), 1)" class="glyphicon glyphicon-remove"></span>
+			<span ng-click="addSubtask(todo)" class="glyphicon glyphicon-plus"></span>
+			<!-- <span ng-class="'glyphicon glyphicon-arrow-'+{todo.priority? 'up': 'right'}"></span> 
+	'glyphicon glyphicon-' + {{ todo.expand? '\'expand\'' : '\'collapse-up\''}}
+			-->
+			<a href ng-click="edit=true" ng-hide="edit" style="cursor:pointer;">{{todo.text}}</a>
+			<input type="text" focus-me="edit" ng-blur="edit=false" ng-show="edit" ng-model="todo.text" class="form-control" placeholder="New TODO">
+
+		</div>
+		<todo-list todos="todo.todos" type="type" collapsed="collapsed"></todo-list>
 	</li>
 </ul>
