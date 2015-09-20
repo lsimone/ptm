@@ -3,9 +3,17 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ngRoute',
-  'myApp.list',
-  'myApp.note',
-  'myApp.pomodoro'
+
+  // states
+  'states.list',
+  'states.note',
+  'states.pomodoro',
+
+  // directives
+  'directives.ngDraggable',
+  'directives.focusMe',
+  'directives.todoList'
+  
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/list'});

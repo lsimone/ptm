@@ -10,5 +10,8 @@
     "angular-route": "1.2.x",
     "angular-loader": "1.2.x",
     "angular-mocks": "~1.2.x"
+  },
+  "devDependencies": {
+    "lodash": "~3.10.1"
   }
 }
